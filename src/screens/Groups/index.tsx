@@ -6,6 +6,7 @@ import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
 import * as Group from "./styles";
 import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
 
 export function Groups() {
   const [groups, setGroups] = useState<string[]>([]);
@@ -23,6 +24,7 @@ export function Groups() {
           <ListEmpty message="Não possui nenhuma turma..." />
         )}
       />
+      <Button title='Criar nova turma'/>
     </Group.Container>
   );
 }
