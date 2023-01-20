@@ -1,5 +1,5 @@
 import { TouchableOpacityProps } from 'react-native'
-import {MaterialIcons} from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'
 
 import * as StyledButtonIcon from './styles'
 
