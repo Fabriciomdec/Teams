@@ -1,5 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { useState, useCallback } from "react";
 import { FlatList } from "react-native";
 
 import { GroupCard } from "@components/GroupCard";
@@ -8,15 +8,29 @@ import { Highlight } from "@components/Highlight";
 import * as Group from "./styles";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
+import { groupsGetAll } from "@storage/group/groupsGetAll";
 
 export function Groups() {
   const [groups, setGroups] = useState<string[]>([]);
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
-  function handleNewGroup(){
-    navigation.navigate('new');
+  function handleNewGroup() {
+    navigation.navigate("new");
   }
+
+  async function fetchGroups() {
+    try {
+      const data = await groupsGetAll();
+      setGroups(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useFocusEffect(useCallback(() => {
+    fetchGroups()
+  }, []))
 
   return (
     <Group.Container>
@@ -31,7 +45,7 @@ export function Groups() {
           <ListEmpty message="Não possui nenhuma turma..." />
         )}
       />
-      <Button title='Criar nova turma' onPress={handleNewGroup}/>
+      <Button title="Criar nova turma" onPress={handleNewGroup} />
     </Group.Container>
   );
 }

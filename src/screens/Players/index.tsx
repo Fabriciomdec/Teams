@@ -14,7 +14,7 @@ import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 
 type RouteParams = {
-  group?: string;
+  group: string;
 }
 
 export function Players() {
