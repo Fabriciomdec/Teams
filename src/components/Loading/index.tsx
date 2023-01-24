@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
- import * as StyleLoading from './styles';
+import * as StyleLoading from "./styles";
 
 export const Loading: React.FC = () => {
-  return <StyleLoading.Container>
-    <StyleLoading.LoadIndicator/>
-  </StyleLoading.Container>
-}
+  return (
+    <StyleLoading.Container>
+      <StyleLoading.LoadIndicator />
+    </StyleLoading.Container>
+  );
+};
